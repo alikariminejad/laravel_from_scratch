@@ -9,6 +9,7 @@
 <a href="{{ route ('home') }}">Home</a>
 <a href="{{ route ('basics.about-us') }}">About Us</a>
 <a href="{{ route ('basics.contact-us') }}">Contact Us</a>
+<a href="{{ route ('posts.index') }}">Posts</a>
 
 {!! $title !!}
 </body>

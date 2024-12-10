@@ -14,6 +14,7 @@ Route::prefix('user')->name('basics.')->middleware(['web', 'web', 'throttle:4,1'
         return 'Contact Us';
     })->name('contact-us');
 });
+Route::resource('posts', \App\Http\Controllers\PostController::class);
 
 Route::middleware([
     'auth:sanctum',
