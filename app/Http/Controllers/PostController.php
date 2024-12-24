@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -15,8 +17,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        return view('posts.index');
+//        $posts = Post::all();
+//        $posts = Post::latest()->get();
+//        $posts = Post::orderby('created_at', 'DESC')->get();
+        $posts = DB::table('posts')-> orderBy('id','DESC') -> get();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -83,8 +88,9 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post -> delete();
+        return redirect() -> back();
     }
 }
