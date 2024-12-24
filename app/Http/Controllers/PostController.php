@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Support\Str;
+
+
 
 class PostController extends Controller
 {
@@ -30,6 +34,26 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+//        dd($request -> all());
+        $request -> validate([
+            'title' => ['required', 'string', 'min:3', 'unique:posts,title'],
+            'description' => ['nullable', 'string'],
+        ]);
+        Post::create([
+            'title' => $request-> input('title'),
+            'slug' => Str ::slug($request->input('title'), '-' ),
+            'description' => $request-> input('description'),
+        ]);
+//        DB::insert([
+//            'title' => $request->input('title'),
+//            'description' => $request->input('description'),
+//        ]);
+//        Post::insert([
+//            'title' => $request-> input('title'),
+//            'desctription' => $request-> input('desctription'),
+//            'created_at' => now(),
+//            'updated_at' => now()
+//        ]);
     }
 
     /**
