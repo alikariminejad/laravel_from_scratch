@@ -72,17 +72,26 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
         //
+        return view('posts.update', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request -> validate([
+            'title' => ['required', 'string', 'min:3', 'unique:posts,title,'. $post->id],
+            'description' => ['nullable', 'string'],
+        ]);
+        $post -> title = $request -> input('title');
+        $post -> description = $request -> input('description');
+        $post -> update();
+        return redirect() -> back();
+
     }
 
     /**
