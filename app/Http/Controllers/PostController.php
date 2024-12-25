@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostFormRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Str;
@@ -36,7 +37,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostFormRequest $request)
     {
         //
 //        dd($request -> all());
