@@ -21,7 +21,7 @@ class PostController extends Controller
 //        $posts = Post::all();
 //        $posts = Post::latest()->get();
 //        $posts = Post::orderby('created_at', 'DESC')->get();
-        $posts = DB::table('posts')-> orderBy('id','DESC') -> get();
+        $posts = DB::table('posts')->whereNull('deleted_at')-> orderBy('id','DESC') -> get();
         return view('posts.index', compact('posts'));
     }
 
