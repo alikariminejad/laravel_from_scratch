@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/', [\App\Http\Controllers\ViewController::class, 'index'])->name('home');
+Route::get('/about-us', [\App\Http\Controllers\ViewController::class,'about_us'])->name('about-us');
+Route::get('/', [\App\Http\Controllers\ViewController::class,'contact'])->name('contact');
 
 
 Route::get('/login', function(){

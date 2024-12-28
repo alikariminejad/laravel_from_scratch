@@ -10,6 +10,16 @@ class ViewController extends Controller
         $title = 'Bootstrap Conversion';
         return view('views.index', compact('title'));
     }
+
+    public function about_us(){
+        $title = 'About Us';
+        return view('views.about', compact('title'));
+    }
+
+    public function contact(){
+        $title = 'Contact page';
+        return view('views.contact', compact('title'));
+    }
     // public function index(){
     //     $data['title']='Learning About View';
     //     $data['description'] = '<h1>why do we use it?</h1>Lorem Ipsum is simply dummy text of the printing';
