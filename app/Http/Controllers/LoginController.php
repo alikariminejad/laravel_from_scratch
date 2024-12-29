@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class LoginController extends Controller{
     public function index() {
         $title = 'Login';
-        return view('login.index', compact('title'));
+        return view('auth.login', compact('title'));
     }
 }
