@@ -41,7 +41,7 @@
 
   <div class="row g-5">
     @include('_partials._left-sidebar')
-    @include('_partials._right-sidebar')
+    {!! $right_sidebar !!}
 
 
   </div>
