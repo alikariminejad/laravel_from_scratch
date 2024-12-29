@@ -44,3 +44,5 @@ Route
 ::middleware(['auth']) -> group(function(){
     Route::resource('posts', \App\Http\Controllers\PostController::class);
 });
+
+Route::get('/cache', [\App\Http\Controllers\CacheController::class, 'index']) -> name('cache');
