@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Post;
 
 class CacheController extends Controller{
     public function index(){
@@ -16,8 +17,22 @@ class CacheController extends Controller{
         // echo Cache::get('user_email_1', );
         // Cache::forget('user_email_1');
         // Cache::flush();
-        \cache() -> put('user_email', 'info@example.com', now()->addDays(5));
-        // echo \cache() -> forget('user_email');
-        echo \cache() -> get('user_email');
-}
+        // \cache() -> put('user_email', 'info@example.com', now()->addDays(5));
+        // // echo \cache() -> forget('user_email');
+        // echo \cache() -> get('user_email');
+        $lock = Cache::lock('post_create', 10);
+        if ($lock -> get()){
+            Post::create([
+                'title' => 'Post',
+                'price' => 100
+            ]);
+            $lock -> release();
+        }
+        Cache::lock('post_create', 10) -> get(function(){
+            Post::create([
+                'title' => 'Post',
+                'price' => 100
+            ]);
+        });
+    }
 }
