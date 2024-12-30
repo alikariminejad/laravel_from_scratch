@@ -46,3 +46,5 @@ Route
 });
 
 Route::get('/cache', [\App\Http\Controllers\CacheController::class, 'index']) -> name('cache');
+
+Route::get('/collections', [\App\Http\Controllers\CollectionController::class, 'index']) -> name('collections');
