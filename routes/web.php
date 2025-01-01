@@ -49,3 +49,7 @@ Route
 Route::get('/cache', [\App\Http\Controllers\CacheController::class, 'index']) -> name('cache');
 
 Route::get('/collections', [\App\Http\Controllers\CollectionController::class, 'index']) -> name('collections');
+
+Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index']) -> name('checkout');
+Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'store']) -> name('checkout') -> name('process-checkout');
+
