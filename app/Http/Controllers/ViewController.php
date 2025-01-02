@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ViewController extends Controller
 {
-    public function index(){
+    public function index(string $locale = 'de'){
+        if (!in_array($locale, ['de', 'en'])){
+            abort(400);
+        }
+        App::setLocale($locale);
         $title = 'Bootstrap Conversion';
         return view('views.index', compact('title'));
     }
@@ -26,5 +31,4 @@ class ViewController extends Controller
     //     $data['comment'] = "<script>alert('Hello You are hacked')</script>";
     //     return view('views.index', $data);
     // }
-
 }

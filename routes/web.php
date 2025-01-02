@@ -4,7 +4,7 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [\App\Http\Controllers\ViewController::class, 'index'])->name('home');
+//Route::get('/{locale?}', [\App\Http\Controllers\ViewController::class, 'index'])->name('home');
 //Route::get('/', [\App\Http\Controllers\ViewController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/about-us', [\App\Http\Controllers\ViewController::class,'about_us'])->name('about-us');
 Route::get('/contact', [\App\Http\Controllers\ViewController::class,'contact'])->name('contact');
@@ -52,4 +52,7 @@ Route::get('/collections', [\App\Http\Controllers\CollectionController::class, '
 
 Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index']) -> name('checkout');
 Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'store']) -> name('checkout') -> name('process-checkout');
+
+Route::get('/trigger-email', [\App\Http\Controllers\OrderController::class, 'index']);
+Route::get('/trigger-markdown-email', [\App\Http\Controllers\OrderController::class, 'markdown_email']);
 
