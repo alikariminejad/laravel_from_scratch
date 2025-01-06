@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\SignUpController;
 use App\Http\Middleware\RateLimiterMiddleware;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
- Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(RateLimiterMiddleware::class);
+// Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(RateLimiterMiddleware::class);
 //Route::get('/{locale?}', [\App\Http\Controllers\ViewController::class, 'index'])->name('home');
 //Route::get('/', [\App\Http\Controllers\ViewController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/about-us', [\App\Http\Controllers\ViewController::class,'about_us'])->name('about-us');
@@ -76,3 +77,7 @@ Route::get('/trigger-notification', function(){
 //    $user -> notifications()->delete();
 });
 
+//Route::get('login', [\App\Http\Controllers\LoginController::class, 'index'])-> name('login');
+
+Route::get('/signup', [SignUpController::class, 'index'])-> name('signup');
+Route::post('/signup', [SignUpController::class, 'register'])-> name('register');

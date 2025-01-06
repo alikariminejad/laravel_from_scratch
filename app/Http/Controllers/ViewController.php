@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\App;
 class ViewController extends Controller
 {
     public function index(string $locale = 'de'){
-        if (!in_array($locale, ['de', 'en'])){
-            abort(400);
-        }
+//        if (!in_array($locale, ['de', 'en'])){
+//            abort(400);
+//        }
         App::setLocale($locale);
         $title = 'Bootstrap Conversion';
         return view('views.index', compact('title'));

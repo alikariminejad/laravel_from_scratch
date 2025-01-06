@@ -17,12 +17,12 @@ class RateLimiterMiddleware
 
     public function handle(Request $request, Closure $next): Response
     {
-        $key = $request->ip();
-
-        if ($this->limiter->tooManyAttempts($key, 5))
-            return new Response('Too many attempts.', 429);
-
-            $this->limiter->hit($key, 60);
+//        $key = $request->ip();
+//
+//        if ($this->limiter->tooManyAttempts($key, 5))
+//            return new Response('Too many attempts.', 429);
+//
+//            $this->limiter->hit($key, 60);
             return $next($request);
         }
     }
