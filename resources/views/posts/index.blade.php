@@ -23,6 +23,7 @@
                 </div>
             </li>
         @endforeach
+            {{ $posts -> links() }}
     @endif
 </li>
 </body>
