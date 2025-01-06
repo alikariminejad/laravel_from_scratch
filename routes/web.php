@@ -55,4 +55,23 @@ Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'stor
 
 Route::get('/trigger-email', [\App\Http\Controllers\OrderController::class, 'index']);
 Route::get('/trigger-markdown-email', [\App\Http\Controllers\OrderController::class, 'markdown_email']);
+Route::get('/trigger-notification', function(){
+    $user = \App\Models\User::first();
+    $user -> notify(new \App\Notifications\AccountCreatedNotification());
+});Route::get('/notifications', function(){
+    $user = \App\Models\User::first();
+//    foreach ($user->notifications as $notification) {
+//        echo $notification->id . '<br/>';
+//        echo $notification->data['username'] . '<br/>';
+//    }
+//    foreach ($user->unreadnotifications as $notification) {
+//        echo $notification->id . '<br/>';
+//        echo $notification->data['username'] . '<br/>';
+//    }
+//    foreach ($user->unreadnotifications as $notification) {
+//        $notification->markAsRead();
+//    }
+    $user -> unreadNotifications->markAsRead();
+//    $user -> notifications()->delete();
+});
 
