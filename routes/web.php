@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Middleware\RateLimiterMiddleware;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(RateLimiterMiddleware::class);
 //Route::get('/{locale?}', [\App\Http\Controllers\ViewController::class, 'index'])->name('home');
 //Route::get('/', [\App\Http\Controllers\ViewController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/about-us', [\App\Http\Controllers\ViewController::class,'about_us'])->name('about-us');
